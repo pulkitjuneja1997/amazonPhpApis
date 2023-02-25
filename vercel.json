@@ -1,0 +1,49 @@
+{
+    "functions": {
+        "api/**/*.php": {
+          "runtime": "vercel-php@0.5.2"
+        }
+      },
+    "routes": [
+    
+        {
+            "src": "/",
+            "dest": "/dest/index.html"
+        },
+        {
+            "src": "/redirect",
+            "status": 308,
+            "headers": {
+                "Location": "https://example.com/"
+            }
+        },
+        {
+            "src": "/custom-page",
+            "headers": {
+                "cache-control": "s-maxage=1000"
+            },
+            "dest": "/index.html"
+        },
+        {
+            "src": "/users",
+            "dest": "/api/test1"
+        },
+        {
+            "src": "/users",
+            "dest": "/api/api1/sample"
+        },
+        {
+            "src": "/auth",
+            "dest": "/api/test2"
+        },
+        {
+            "src": "/legacy",
+            "status": 404
+        },
+        {
+            "src": "/final",
+            "dest": "/dest/auth"
+        }
+       
+    ]
+}

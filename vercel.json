@@ -6,13 +6,8 @@
       },
     "routes": [
     
-        {
-            "src": "/",
-            "dest": "/dest/index.html"
-        },
-        {
-            "src": "/redirect",
-            "status": 308,
+        { "src": "/", "dest": "/dest/index.html" },
+        { "src": "/redirect", "status": 308,
             "headers": {
                 "Location": "https://example.com/"
             }
@@ -24,26 +19,11 @@
             },
             "dest": "/index.html"
         },
-        {
-            "src": "/users",
-            "dest": "/api/test1"
-        },
-        {
-            "src": "/users",
-            "dest": "/api/api1/sample"
-        },
-        {
-            "src": "/auth",
-            "dest": "/api/test2"
-        },
-        {
-            "src": "/legacy",
-            "status": 404
-        },
-        {
-            "src": "/final",
-            "dest": "/dest/auth"
-        }
+        { "src": "/users", "dest": "/api/test1" },
+        { "src": "/users", "dest": "/api/api1/sample" },
+        { "src": "/auth", "dest": "/api/test2" },
+        { "src": "/legacy", "status": 404 },
+        { "src": "/final", "dest": "/dest/auth" }
        
     ]
 }

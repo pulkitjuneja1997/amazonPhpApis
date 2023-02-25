@@ -1,11 +1,10 @@
 <?php
 
-$request_body = $_POST;
+
 
 function ced_amazon_fetch_next_level_category( $request_body ) {
 
     $template_id = isset($_POST['template_id']) ? $_POST['template_id'] : '';
-
     $select_html = '';
     global $wpdb;
     
@@ -17,6 +16,7 @@ function ced_amazon_fetch_next_level_category( $request_body ) {
 
     $next_level           = intval( $level ) + 1;
 
+    print_r($request_body);
     $amzonCurlRequest = __DIR__ . '/amazon/lib/ced-amazon-curl-request.php';
 
     if ( file_exists( $amzonCurlRequest ) ) {
@@ -26,21 +26,25 @@ function ced_amazon_fetch_next_level_category( $request_body ) {
         return;
     }
 
+    echo 'template_id';
+    print_r($template_id); 
     if ( ! empty( $template_id ) ) {
 
         $url = $domain . '/wp-json/api-test/v1/getProfileDetails';
         $args = array(
-        'method'      => 'POST',
-        'timeout'     => 45,
-        'sslverify'   => false,
-        'headers'     => array(
-            'Content-Type'  => 'application/json',
-        ),
-        'body'        => json_encode( array('template_id' => $template_id ) ),
-    );
+            'method'      => 'POST',
+            'timeout'     => 45,
+            'sslverify'   => false,
+            'headers'     => array(
+                'Content-Type'  => 'application/json',
+            ),
+            'body'        => json_encode( array('template_id' => $template_id ) ),
+        );
         $args = array();
         wp_remote_post( $url, $args );
     }
+
+
 
         if ( 'no' == $display_saved_values ) {
             $current_amazon_profile = array();
@@ -349,5 +353,7 @@ function ced_amazon_fetch_next_level_category( $request_body ) {
     
 }
 
+$request_body = $_POST;
+ced_amazon_fetch_next_level_category($request_body);
 
 ?>

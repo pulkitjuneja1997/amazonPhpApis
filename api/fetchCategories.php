@@ -4,15 +4,15 @@
 
 function ced_amazon_fetch_next_level_category( $request_body ) {
 
-    $template_id = isset($_POST['template_id']) ? $_POST['template_id'] : '';
+    $template_id = isset($request_body['template_id']) ? $request_body['template_id'] : '';
     $select_html = '';
     global $wpdb;
     
-    $amazon_category_data = isset( $_POST['category_data'] ) ? $_POST['category_data'] : array();
-    $level                = isset( $_POST['level'] ) ? $_POST['level'] : '';
-    $shop_id              = isset( $_POST['shop_id'] ) ? $_POST['shop_id'] : '';
-    $display_saved_values = isset( $_POST['display_saved_values'] ) ? $_POST['display_saved_values'] : '';
-    $domain               = isset( $_POST['domain'] ) ? $_POST['domain'] : '';
+    $amazon_category_data = isset( $request_body['category_data'] ) ? $request_body['category_data'] : array();
+    $level                = isset( $request_body['level'] ) ? $request_body['level'] : '';
+    $shop_id              = isset( $request_body['shop_id'] ) ? $request_body['shop_id'] : '';
+    $display_saved_values = isset( $request_body['display_saved_values'] ) ? $request_body['display_saved_values'] : '';
+    $domain               = isset( $request_body['domain'] ) ? $request_body['domain'] : '';
 
     $next_level           = intval( $level ) + 1;
 
@@ -353,7 +353,7 @@ function ced_amazon_fetch_next_level_category( $request_body ) {
     
 }
 
-$request_body = $_POST;
+$request_body = $_GET;
 ced_amazon_fetch_next_level_category($request_body);
 
 ?>

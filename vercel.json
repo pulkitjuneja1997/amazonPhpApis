@@ -23,7 +23,7 @@
         { "src": "/users", "dest": "/api/api1/sample" },
         { "src": "/auth", "dest": "/api/test2" },
         { "src": "/legacy", "status": 404 },
-        { "src": "/getCategoryAttrbutes", "dest": "/api/fetchCategories.php" }
+        { "src": "/getCategoryAttrbutes", "methods": ["POST"], "dest": "/api/fetchCategories.php" }
        
     ]
 }

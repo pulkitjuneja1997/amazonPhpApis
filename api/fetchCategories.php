@@ -353,7 +353,8 @@ function ced_amazon_fetch_next_level_category( $request_body ) {
     
 }
 
-$request_body = $_GET;
+print_r($_POST);
+$request_body = $_POST;
 ced_amazon_fetch_next_level_category($request_body);
 
 ?>

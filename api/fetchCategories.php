@@ -4,43 +4,43 @@ $request_body = $_POST;
 
 function ced_amazon_fetch_next_level_category( $request_body ) {
 
-        $template_id = isset($_POST['template_id']) ? $_POST['template_id'] : '';
+    $template_id = isset($_POST['template_id']) ? $_POST['template_id'] : '';
 
-        $select_html = '';
-        global $wpdb;
-       
-        $amazon_category_data = isset( $_POST['category_data'] ) ? $_POST['category_data'] : array();
-        $level                = isset( $_POST['level'] ) ? $_POST['level'] : '';
-        $shop_id              = isset( $_POST['shop_id'] ) ? $_POST['shop_id'] : '';
-        $display_saved_values = isset( $_POST['display_saved_values'] ) ? $_POST['display_saved_values'] : '';
-        $domain               = isset( $_POST['domain'] ) ? $_POST['domain'] : '';
+    $select_html = '';
+    global $wpdb;
+    
+    $amazon_category_data = isset( $_POST['category_data'] ) ? $_POST['category_data'] : array();
+    $level                = isset( $_POST['level'] ) ? $_POST['level'] : '';
+    $shop_id              = isset( $_POST['shop_id'] ) ? $_POST['shop_id'] : '';
+    $display_saved_values = isset( $_POST['display_saved_values'] ) ? $_POST['display_saved_values'] : '';
+    $domain               = isset( $_POST['domain'] ) ? $_POST['domain'] : '';
 
-        $next_level           = intval( $level ) + 1;
+    $next_level           = intval( $level ) + 1;
 
-        $amzonCurlRequest = __DIR__ . '/amazon/lib/ced-amazon-curl-request.php';
+    $amzonCurlRequest = __DIR__ . '/amazon/lib/ced-amazon-curl-request.php';
 
-        if ( file_exists( $amzonCurlRequest ) ) {
-            require_once $amzonCurlRequest;
-            $amzonCurlRequestInstance = new Ced_Amazon_Curl_Request();
-        } else {
-            return;
-        }
+    if ( file_exists( $amzonCurlRequest ) ) {
+        require_once $amzonCurlRequest;
+        $amzonCurlRequestInstance = new Ced_Amazon_Curl_Request();
+    } else {
+        return;
+    }
 
-        if ( ! empty( $template_id ) ) {
+    if ( ! empty( $template_id ) ) {
 
-           $url = $domain . '/wp-json/api-test/v1/getProfileDetails';
-           $args = array(
-            'method'      => 'POST',
-            'timeout'     => 45,
-            'sslverify'   => false,
-            'headers'     => array(
-                'Content-Type'  => 'application/json',
-            ),
-            'body'        => json_encode( array('itemIDs' => $itemId) ),
-        );
-           $args = array();
-           wp_remote_post( $url, $args );
-        }
+        $url = $domain . '/wp-json/api-test/v1/getProfileDetails';
+        $args = array(
+        'method'      => 'POST',
+        'timeout'     => 45,
+        'sslverify'   => false,
+        'headers'     => array(
+            'Content-Type'  => 'application/json',
+        ),
+        'body'        => json_encode( array('template_id' => $template_id ) ),
+    );
+        $args = array();
+        wp_remote_post( $url, $args );
+    }
 
         if ( 'no' == $display_saved_values ) {
             $current_amazon_profile = array();

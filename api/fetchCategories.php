@@ -101,12 +101,10 @@ function ced_amazon_fetch_next_level_category( $request_body ) {
     $decodedUserData  = json_decode( $user_data_response, true );
 
     print_r($decodedUserData);
-    if( $decodedUserData['status'] ){
+    if( ! $decodedUserData['status'] )
         return $user_data_response;
-    }
-
-    $userData = json_decode( $decodedUserData['data'] );    
-    print_r($userData);
+    
+    $userData = $decodedUserData['data'];    
     $userCountry = $userData['ced_mp_name'];
 
 
@@ -147,7 +145,6 @@ function ced_amazon_fetch_next_level_category( $request_body ) {
 
     if ( 4 == $next_level ) {
 
-        die('okkk');
         $upload_dir = __DIR__ . '/uploads';
 
         // fetch product template

@@ -96,7 +96,8 @@ class Ced_Amazon_Curl_Request {
 		// echo $data_response->getHeaderLine('content-type'); // 'application/json; charset=utf8'
 		//echo $data_response->getBody(); // '{"id": 1420053, "name": "guzzle", ...}'
 		
-		require_once __DIR__ . '/ced_amazon_core_functions.php';
+		require_once __DIR__ . '/../../ced_amazon_core_functions.php';
+
 		$json_url           = $data_response['url'];
 		$json_url           = stripslashes( $json_url );
 		$json_template_data = file_get_contents( $json_url );

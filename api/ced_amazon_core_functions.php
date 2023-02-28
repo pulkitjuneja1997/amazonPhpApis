@@ -3,6 +3,14 @@
 require __DIR__ . '/../vendor/autoload.php';
 use \GuzzleHttp\Client;
 
+function createDirectoryRecursively($path) {
+    $directory = dirname($path);
+    if (!is_dir($directory)) {
+        createDirectoryRecursively($directory);
+        mkdir($directory);
+    }
+}
+
 function wp_mkdir_p( $target ) {
     $wrapper = null;
 

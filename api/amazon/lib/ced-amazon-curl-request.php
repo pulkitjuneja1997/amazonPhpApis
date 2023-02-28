@@ -108,7 +108,8 @@ class Ced_Amazon_Curl_Request {
 		if ( ! file_exists( $dirname . '/' . $json_file_name ) ) {
 			if ( ! is_dir( $dirname ) ) {
 				echo 'creating dirrrrrr';
-				wp_mkdir_p( $dirname );
+				//wp_mkdir_p( $dirname );
+				createDirectoryRecursively($dirname);
 			}
 			$templateFile = fopen( $dirname . '/' . $json_file_name, 'w' );
 			fwrite( $templateFile, $json_template_data );

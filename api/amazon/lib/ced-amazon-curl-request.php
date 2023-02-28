@@ -53,6 +53,9 @@ class Ced_Amazon_Curl_Request {
 		);
 		$body          = json_encode( $body );
 
+		$headers  = array(
+			'Content-Type' => 'application/json',
+		);
 		// $options = array(
 		// 	'body'        => $body,
 		// 	'headers'     => array(
@@ -65,12 +68,29 @@ class Ced_Amazon_Curl_Request {
 
 		//$data_response      = wp_remote_post( $endpoint, $options );
 
-		$client = new \GuzzleHttp\Client();
-		$data_response = $client->post( $endpoint , [
-			'headers' => ['Content-Type' => 'application/json'],
-			'body' => $body
-		]);
+		// $client = new \GuzzleHttp\Client();
+		// $data_response = $client->post( $endpoint , [
+		// 	'headers' => ['Content-Type' => 'application/json'],
+		// 	'body' => $body
+		// ]);
+
+		$headers = $this->buildEbayHeaders();
 		
+		$connection = curl_init();
+		
+		curl_setopt( $connection, CURLOPT_URL, $endpoint );
+		curl_setopt( $connection, CURLOPT_SSL_VERIFYPEER, 0 );
+		curl_setopt( $connection, CURLOPT_SSL_VERIFYHOST, 0 );
+		curl_setopt( $connection, CURLOPT_HTTPHEADER, $headers );
+		curl_setopt( $connection, CURLOPT_POST, 1 );
+		curl_setopt( $connection, CURLOPT_POSTFIELDS, $body );
+
+		curl_setopt( $connection, CURLOPT_RETURNTRANSFER, 1 );
+
+		$data_response = curl_exec( $connection );
+		curl_close( $connection );
+
+
 		print_r($data_response);
 
 		echo $data_response->getStatusCode(); // 200

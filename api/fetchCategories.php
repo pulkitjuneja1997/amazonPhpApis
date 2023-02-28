@@ -13,6 +13,7 @@ function ced_amazon_fetch_next_level_category( $request_body ) {
     $display_saved_values = isset( $request_body['display_saved_values'] ) ? $request_body['display_saved_values'] : '';
     $domain               = isset( $request_body['domain'] ) ? $request_body['domain'] : '';
 
+    $domain = 'https://locarbu.com/';
     $next_level           = intval( $level ) + 1;
 
     print_r($request_body);
@@ -96,7 +97,14 @@ function ced_amazon_fetch_next_level_category( $request_body ) {
     // $userCountry = $userData['ced_mp_name'];
 
     require_once __DIR__ . '/ced_amazon_core_functions.php';
-    $userData = getUserAccountMetaData($domain);
+    $user_data_response = getUserAccountMetaData($domain);
+    $decodedUserData  = json_decode( $user_data_response );
+
+    if( $decodedUserData['status'] )
+        return $user_data_response;
+
+    $userData = json_decode( $decodedUserData['data'] );    
+    print_r($userData);
     $userCountry = $userData['ced_mp_name'];
 
 

@@ -91,6 +91,8 @@ class Ced_Amazon_Curl_Request {
 
 		print_r($data_response);
 
+		print_r(json_decode($data_response, true));
+
 		// echo $data_response->getStatusCode(); // 200
 		// echo $data_response->getHeaderLine('content-type'); // 'application/json; charset=utf8'
 		// echo $data_response->getBody(); // '{"id": 1420053, "name": "guzzle", ...}'

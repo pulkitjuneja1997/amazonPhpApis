@@ -1,5 +1,8 @@
 <?php
 
+require __DIR__ . '/../vendor/autoload.php';
+use \GuzzleHttp\Client;
+
 class Ced_Amazon_Curl_Request {
 
 	public $upload_dir;
@@ -61,6 +64,7 @@ class Ced_Amazon_Curl_Request {
 
 		//$data_response      = wp_remote_post( $endpoint, $options );
 
+		$client = new \GuzzleHttp\Client();
 		$data_response = $client->post( $endpoint , [
 			'headers' => ['Content-Type' => 'application/json'],
 			'body' => $body

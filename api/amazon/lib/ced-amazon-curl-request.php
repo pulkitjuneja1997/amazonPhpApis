@@ -43,6 +43,7 @@ class Ced_Amazon_Curl_Request {
 
 	public function fetchProductTemplate( $category_id, $userCountry ) {
 
+		print_r($category_id); echo $userCountry;
 		$this->upload_dir = __DIR__ . '/uploads';
 		// Product flat file template structure json file
 		$file_location = 'lib/' . $userCountry . '/' . $category_id . '/json/products_template_fields.json';  // products_all_fields.json'
@@ -70,6 +71,7 @@ class Ced_Amazon_Curl_Request {
 			'body' => $body
 		]);
 
+		print_r($data_response);
 		
 		$data_response      = json_decode( $data_response['body'], true );
 		$json_url           = $data_response['url'];

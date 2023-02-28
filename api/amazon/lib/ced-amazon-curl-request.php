@@ -73,8 +73,6 @@ class Ced_Amazon_Curl_Request {
 		// 	'headers' => ['Content-Type' => 'application/json'],
 		// 	'body' => $body
 		// ]);
-
-		$headers = $this->buildEbayHeaders();
 		
 		$connection = curl_init();
 		

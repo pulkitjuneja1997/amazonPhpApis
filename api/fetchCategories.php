@@ -98,7 +98,7 @@ function ced_amazon_fetch_next_level_category( $request_body ) {
 
     require_once __DIR__ . '/ced_amazon_core_functions.php';
     $user_data_response = getUserAccountMetaData($domain);
-    $decodedUserData  = json_decode( $user_data_response );
+    $decodedUserData  = json_decode( $user_data_response, true );
 
     if( $decodedUserData['status'] )
         return $user_data_response;

@@ -39,7 +39,7 @@ function getUserAccountMetaData($domain){
     echo $response->getHeaderLine('content-type'); // 'application/json; charset=utf8'
     echo $response->getBody(); // '{"id": 1420053, "name": "guzzle", ...}'
     
-    if( $response['status'] ){
+    if( $response->getStatusCode() == 200 ){
         return json_encode( array( 'status' => true, 'data' => $response->getBody() ) ); 
     } else
         return json_encode( array( 'status' => false, 'message' => ' '));

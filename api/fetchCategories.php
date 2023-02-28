@@ -6,8 +6,7 @@ function ced_amazon_fetch_next_level_category( $request_body ) {
 
     $template_id = isset($request_body['template_id']) ? $request_body['template_id'] : '';
     $select_html = '';
-    global $wpdb;
-    
+   
     $amazon_category_data = isset( $request_body['category_data'] ) ? $request_body['category_data'] : array();
     $level                = isset( $request_body['level'] ) ? $request_body['level'] : '';
     $shop_id              = isset( $request_body['shop_id'] ) ? $request_body['shop_id'] : '';
@@ -156,10 +155,10 @@ function ced_amazon_fetch_next_level_category( $request_body ) {
         if ( ! file_exists( $fileName ) || ! file_exists( $valid_values_file ) ) {
 
             if ( ! is_dir( $dirname ) ) {
-                wp_mkdir_p( $dirname );
+                mkdir( $dirname );
             }
 
-            wp_mkdir_p( $dirname );
+            mkdir( $dirname );
 
             $amazon_profile_data = $amzonCurlRequestInstance->ced_amazon_get_category( $url_array[ $next_level ]['url'] );
 

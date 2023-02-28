@@ -100,8 +100,10 @@ function ced_amazon_fetch_next_level_category( $request_body ) {
     $user_data_response = getUserAccountMetaData($domain);
     $decodedUserData  = json_decode( $user_data_response, true );
 
-    if( $decodedUserData['status'] )
+    print_r($decodedUserData);
+    if( $decodedUserData['status'] ){
         return $user_data_response;
+    }
 
     $userData = json_decode( $decodedUserData['data'] );    
     print_r($userData);

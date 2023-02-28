@@ -40,7 +40,9 @@ function getUserAccountMetaData($domain){
     echo $response->getBody(); // '{"id": 1420053, "name": "guzzle", ...}'
     
     if( $response->getStatusCode() == 200 ){
-        return json_encode( array( 'status' => true, 'data' => $response->getBody() ) ); 
+        $responseBody = $response->getBody();
+        $data = json_decode( $responseBody, true );
+        return json_encode( array( 'status' => true, 'data' => $data['user_data'] ) ); 
     } else
         return json_encode( array( 'status' => false, 'message' => ' '));
 

@@ -59,7 +59,7 @@ class Ced_Amazon_Curl_Request {
 		// 	'sslverify'   => false,
 		// );
 
-		$data_response      = wp_remote_post( $endpoint, $options );
+		//$data_response      = wp_remote_post( $endpoint, $options );
 
 		$data_response = $client->post( $endpoint , [
 			'headers' => ['Content-Type' => 'application/json'],

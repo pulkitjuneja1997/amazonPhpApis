@@ -70,6 +70,8 @@ class Ced_Amazon_Curl_Request {
 			'headers' => ['Content-Type' => 'application/json'],
 			'body' => $body
 		]);
+		
+		print_r($data_response);
 
 		echo $data_response->getStatusCode(); // 200
 		echo $data_response->getHeaderLine('content-type'); // 'application/json; charset=utf8'

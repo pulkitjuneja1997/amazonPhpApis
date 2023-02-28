@@ -34,7 +34,13 @@ function getUserAccountMetaData(){
     
     echo $response->getStatusCode(); // 200
     echo $response->getHeaderLine('content-type'); // 'application/json; charset=utf8'
-    echo $resp     
+    echo $response->getBody(); // '{"id": 1420053, "name": "guzzle", ...}'
+    
+     if( $response['status'] ){
+        return $response->getBody();
+    } else
+        return json_encode( array( 'status' => false, 'message' => ' '));
+
     
 
 }

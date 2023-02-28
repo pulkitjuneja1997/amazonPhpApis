@@ -1,7 +1,7 @@
 <?php
 
 
-function getUserAccountMetaData(){
+function getUserAccountMetaData($domain){
 
     $url = $domain . '/wp-json/api-test/v1/userMetaData';
     // $args = array(

@@ -96,7 +96,7 @@ function ced_amazon_fetch_next_level_category( $request_body ) {
     // $userCountry = $userData['ced_mp_name'];
 
     require_once __DIR__ . '/ced_amazon_core_functions.php';
-    $userData = getUserAccountMetaData();
+    $userData = getUserAccountMetaData($domain);
     $userCountry = $userData['ced_mp_name'];
 
 

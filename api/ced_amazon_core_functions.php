@@ -1,6 +1,8 @@
 <?php
 
+require __DIR__ . '/../vendor/autoload.php';
 use \GuzzleHttp\Client;
+
 
 function getUserAccountMetaData($domain){
 
@@ -31,7 +33,7 @@ function getUserAccountMetaData($domain){
 
 
     $client = new \GuzzleHttp\Client();
-    $response = $client->request('GET', '');
+    $response = $client->request('GET', $url);
     
     echo $response->getStatusCode(); // 200
     echo $response->getHeaderLine('content-type'); // 'application/json; charset=utf8'

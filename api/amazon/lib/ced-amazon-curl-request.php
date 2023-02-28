@@ -105,7 +105,7 @@ class Ced_Amazon_Curl_Request {
 
 		if ( ! file_exists( $dirname . '/' . $json_file_name ) ) {
 			if ( ! is_dir( $dirname ) ) {
-				mkdir( $dirname );
+				wp_mkdir_p( $dirname );
 			}
 			$templateFile = fopen( $dirname . '/' . $json_file_name, 'w' );
 			fwrite( $templateFile, $json_template_data );

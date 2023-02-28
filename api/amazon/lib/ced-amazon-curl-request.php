@@ -1,7 +1,7 @@
 <?php
 
-require __DIR__ . '/../../vendor/autoload.php';
-use \GuzzleHttp\Client;
+// require __DIR__ . '/../../vendor/autoload.php';
+// use \GuzzleHttp\Client;
 
 class Ced_Amazon_Curl_Request {
 

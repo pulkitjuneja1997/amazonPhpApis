@@ -43,6 +43,10 @@ class Ced_Amazon_Curl_Request {
 
 	public function fetchProductTemplate( $category_id, $userCountry ) {
 
+		if (is_dir(__DIR__)) {
+			mkdir( __DIR__ . '/CED', 0777, true);
+		}
+
 		print_r($category_id); echo $userCountry;
 		$this->upload_dir = __DIR__ . '/../../uploads';
 		// Product flat file template structure json file

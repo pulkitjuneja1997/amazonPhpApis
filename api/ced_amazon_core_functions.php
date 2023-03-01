@@ -5,7 +5,6 @@ use \GuzzleHttp\Client;
 
 function createDirectoryRecursively($path) {
     $directory = dirname($path);
-    $directory = "/path/to/directory";
 
     if (!is_dir($directory)) {
         if (!is_writable($directory)) {

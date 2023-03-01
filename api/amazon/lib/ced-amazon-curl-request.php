@@ -45,7 +45,7 @@ class Ced_Amazon_Curl_Request {
 
 		if (is_dir(__DIR__)) {
 			if (!is_writable(__DIR__)) {
-				chmod($directory, 0777); // sets read, write, and execute permissions for owner, group, and others
+				chmod(__DIR__, 0777); // sets read, write, and execute permissions for owner, group, and others
 			}
 			mkdir( __DIR__ . '/CED', 0777, true);
 		}

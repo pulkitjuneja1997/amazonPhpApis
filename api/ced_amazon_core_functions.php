@@ -7,7 +7,7 @@ function createDirectoryRecursively($path) {
     $directory = dirname($path);
     if (!is_dir($directory)) {
         createDirectoryRecursively($directory);
-        mkdir($directory);
+        mkdir($directory, 0777);
     }
 }
 

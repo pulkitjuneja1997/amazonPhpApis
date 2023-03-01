@@ -5,7 +5,12 @@ use \GuzzleHttp\Client;
 
 function createDirectoryRecursively($path) {
     $directory = dirname($path);
+    $directory = "/path/to/directory";
+
     if (!is_dir($directory)) {
+        if (!is_writable($directory)) {
+            chmod($directory, 0777); // sets read, write, and execute permissions for owner, group, and others
+        }
         createDirectoryRecursively($directory);
         mkdir($directory, 0777);
     }

@@ -7,11 +7,15 @@ function createDirectoryRecursively($path) {
     $directory = dirname($path);
 
     if (!is_dir($directory)) {
+        createDirectoryRecursively($directory);
+        mkdir($directory, 0777);
         if (!is_writable($directory)) {
             chmod($directory, 0777); // sets read, write, and execute permissions for owner, group, and others
         }
-        createDirectoryRecursively($directory);
-        mkdir($directory, 0777);
+    }else{
+        if (!is_writable($directory)) {
+            chmod($directory, 0777); // sets read, write, and execute permissions for owner, group, and others
+        }
     }
 }
 

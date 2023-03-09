@@ -7,6 +7,40 @@ class Ced_Amazon_Curl_Request {
 
 	public $upload_dir;
 
+
+	function amazon_profile_template_data( $userCountry , $category_id , $sub_category_id ){
+
+		$body = array(
+			'userCountry' => $userCountry , 
+			'category_id' => $category_id ,
+			'sub_category_id' =>  $sub_category_id
+		);
+		$body          = json_encode( $body );
+		$headers  = array(
+			'Content-Type' => 'application/json',
+		);
+
+		$connection = curl_init();
+		
+		curl_setopt( $connection, CURLOPT_URL, $endpoint );
+		curl_setopt( $connection, CURLOPT_SSL_VERIFYPEER, 0 );
+		curl_setopt( $connection, CURLOPT_SSL_VERIFYHOST, 0 );
+		curl_setopt( $connection, CURLOPT_HTTPHEADER, $headers );
+		curl_setopt( $connection, CURLOPT_POST, 1 );
+		curl_setopt( $connection, CURLOPT_POSTFIELDS, $body );
+
+		curl_setopt( $connection, CURLOPT_RETURNTRANSFER, 1 );
+
+		$data_response = curl_exec( $connection );
+		curl_close( $connection );
+
+
+		$data_response = json_decode($data_response, true);
+
+		print_r($data_response);
+
+	}
+
 	public function ced_amazon_get_category( $url ) {
 
 		$access_token = get_option( 'ced_amazon_sellernext_access_token', true );
